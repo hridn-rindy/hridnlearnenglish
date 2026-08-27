@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>English Exploration</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    background: white;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    height: 90px;
+    background: #8fd3e3;
+    border-bottom: 5px solid black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header h1 {
+    margin: 0;
+    color: #fff200;
+    font-size: 42px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+/* =========================
+   MAIN LAYOUT
+========================= */
+
+.website {
+    display: grid;
+
+    grid-template-columns: 180px 1fr 300px;
+
+    min-height: calc(100vh - 90px);
+}
+
+/* =========================
+   LEFT MENU
+========================= */
+
+.sidebar {
+    border-right: 4px solid black;
+    background: white;
+    padding-top: 10px;
+}
+
+.menu-button {
+    width: 100%;
+    min-height: 55px;
+
+    border: none;
+    border-bottom: 4px solid black;
+
+    background: white;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 27px;
+    font-weight: bold;
+
+    text-align: left;
+
+    padding: 5px 8px;
+
+    cursor: pointer;
+}
+
+.menu-button:hover {
+    background: #eeeeee;
+}
+
+/* Different colors like your drawing */
+
+.explore {
+    color: #ff7a00;
+}
+
+.grammar {
+    color: #ed1c24;
+}
+
+.pronunciation {
+    color: #3f51b5;
+}
+
+.topics {
+    color: #20a64a;
+}
+
+
+/* =========================
+   CENTER CONTENT
+========================= */
+
+.content {
+    padding: 25px 55px;
+    background: white;
+}
+
+.page-title {
+    text-align: center;
+
+    font-size: 36px;
+
+    color: #ff6b00;
+
+    margin: 0 0 20px 0;
+}
+
+.article-area {
+    border: 4px solid #ff8a24;
+
+    min-height: 500px;
+
+    padding: 30px;
+
+    background: #fff;
+}
+
+.article-area h2 {
+    margin-top: 0;
+
+    font-size: 34px;
+
+    color: #111;
+}
+
+.article-area p {
+    font-family: Arial, sans-serif;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+}
+
+.article {
+    border-bottom: 2px solid #ddd;
+
+    padding-bottom: 20px;
+
+    margin-bottom: 25px;
+}
+
+.article h3 {
+    font-size: 25px;
+
+    margin-bottom: 5px;
+
+    cursor: pointer;
+}
+
+.article h3:hover {
+    text-decoration: underline;
+}
+
+.date {
+    color: #777;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   RIGHT MAGAZINES
+========================= */
+
+.magazines {
+    border-left: 4px solid #8fd3e3;
+
+    padding: 8px;
+
+    background: white;
+}
+
+.magazines-title {
+    margin: 0;
+
+    padding: 18px 10px;
+
+    background: #ed1c24;
+
+    color: black;
+
+    font-size: 38px;
+
+    font-weight: bold;
+}
+
+.recent-post {
+    margin: 12px 0;
+
+    min-height: 70px;
+
+    border: 4px solid black;
+
+    border-radius: 20px;
+
+    padding: 10px;
+
+    background: white;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.recent-post:hover {
+    background: #f0f0f0;
+
+    transform: translateX(-3px);
+}
+
+.recent-post h4 {
+    margin: 0;
+
+    font-size: 18px;
+}
+
+.recent-post small {
+    display: block;
+
+    margin-top: 6px;
+
+    color: #777;
+
+    font-family: Arial, sans-serif;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px) {
+
+    .website {
+        grid-template-columns: 150px 1fr;
+    }
+
+    .magazines {
+        display: none;
+    }
+
+    .header h1 {
+        font-size: 28px;
+    }
+
+    .content {
+        padding: 20px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .website {
+        display: block;
+    }
+
+    .sidebar {
+        border-right: none;
+
+        border-bottom: 4px solid black;
+
+        display: flex;
+
+        overflow-x: auto;
+    }
+
+    .menu-button {
+        min-width: 150px;
+
+        border-right: 2px solid black;
+
+        border-bottom: none;
+    }
+
+    .content {
+        padding: 15px;
+    }
+
+    .article-area {
+        padding: 20px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <h1>
+        WEBSITE FOR ENGLISH EXPLORATION
+    </h1>
+
+</header>
+
+
+
+<div class="website">
+
+
+<!-- =========================
+     LEFT MENU
+========================= -->
+
+<aside class="sidebar">
+
+    <button
+        class="menu-button explore"
+        onclick="showCategory('Explore')">
+        Explore
+    </button>
+
+    <button
+        class="menu-button grammar"
+        onclick="showCategory('Grammar')">
+        Grammar
+    </button>
+
+    <button
+        class="menu-button pronunciation"
+        onclick="showCategory('Pronunciation')">
+        Pronunciation
+    </button>
+
+    <button
+        class="menu-button topics"
+        onclick="showCategory('Topics')">
+        Topics
+    </button>
+
+</aside>
+
+
+
+<!-- =========================
+     CENTER
+========================= -->
+
+<main class="content">
+
+    <h2 class="page-title" id="categoryTitle">
+        Explore
+    </h2>
+
+
+    <div class="article-area" id="articleArea">
+
+        <h2>Contents</h2>
+
+        <div id="articles"></div>
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================
+     RIGHT SIDE
+========================= -->
+
+<aside class="magazines">
+
+    <h2 class="magazines-title">
+        magazines
+    </h2>
+
+    <div id="recentPosts"></div>
+
+</aside>
+
+
+</div>
+
+
+
+<script>
+
+/* ==================================================
+   YOUR ARTICLES
+
+   Bạn sẽ thêm bài viết ở đây.
+================================================== */
+
+const articles = [
+
+    {
+        title: "How to Explore the English Language",
+        category: "Explore",
+        date: "August 27, 2026",
+        content:
+        "This is an example article. You can replace this text with your own English learning content."
+    },
+
+    {
+        title: "Understanding English Grammar",
+        category: "Grammar",
+        date: "August 26, 2026",
+        content:
+        "Grammar helps us understand how words and sentences work together in English."
+    },
+
+    {
+        title: "How to Improve Your English Pronunciation",
+        category: "Pronunciation",
+        date: "August 25, 2026",
+        content:
+        "Good pronunciation makes your English easier for other people to understand."
+    },
+
+    {
+        title: "Interesting Topics to Talk About",
+        category: "Topics",
+        date: "August 24, 2026",
+        content:
+        "Here are some interesting topics that you can use to practice speaking English."
+    },
+
+    {
+        title: "English Expressions You Should Know",
+        category: "Explore",
+        date: "August 23, 2026",
+        content:
+        "Learning expressions can help you understand natural English conversations."
+    }
+
+];
+
+
+/* ==================================================
+   SHOW ARTICLES BY CATEGORY
+================================================== */
+
+function showCategory(category) {
+
+    document.getElementById("categoryTitle").innerText = category;
+
+    const area = document.getElementById("articles");
+
+    area.innerHTML = "";
+
+
+    const categoryArticles =
+        articles.filter(article => article.category === category);
+
+
+    if (categoryArticles.length === 0) {
+
+        area.innerHTML = `
+            <p>
+                No articles have been added to this section yet.
+            </p>
+        `;
+
+        return;
+    }
+
+
+    categoryArticles.forEach(article => {
+
+        const articleHTML = `
+
+            <div class="article">
+
+                <h3>
+                    ${article.title}
+                </h3>
+
+                <div class="date">
+                    ${article.date}
+                </div>
+
+                <p>
+                    ${article.content}
+                </p>
+
+            </div>
+
+        `;
+
+        area.innerHTML += articleHTML;
+
+    });
+
+}
+
+
+/* ==================================================
+   SHOW RECENT ARTICLES
+================================================== */
+
+function showRecentPosts() {
+
+    const recentArea =
+        document.getElementById("recentPosts");
+
+    recentArea.innerHTML = "";
+
+
+    const recentArticles =
+        articles.slice(0, 5);
+
+
+    recentArticles.forEach(article => {
+
+        const postHTML = `
+
+            <div
+                class="recent-post"
+                onclick="showCategory('${article.category}')"
+            >
+
+                <h4>
+                    ${article.title}
+                </h4>
+
+                <small>
+                    ${article.date}
+                </small>
+
+            </div>
+
+        `;
+
+        recentArea.innerHTML += postHTML;
+
+    });
+
+}
+
+
+/* ==================================================
+   START WEBSITE
+================================================== */
+
+showCategory("Explore");
+
+showRecentPosts();
+
+</script>
+
+
+</body>
+</html>
