@@ -1,319 +1,999 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>English Exploration</title>
 
+
 <style>
+
+/* =========================================================
+   BASIC
+========================================================= */
 
 * {
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
+    background: #ffffff;
+    color: #111111;
     font-family: Georgia, "Times New Roman", serif;
-    background: white;
 }
 
-/* =========================
+
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 
 .header {
-    height: 90px;
-    background: #8fd3e3;
-    border-bottom: 5px solid black;
+
+    height: 105px;
+
+    background: #91d5e5;
+
+    border-bottom: 5px solid #111111;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
+    position: relative;
+
+    padding: 10px 70px;
 }
+
 
 .header h1 {
+
     margin: 0;
+
     color: #fff200;
-    font-size: 42px;
-    letter-spacing: 2px;
+
+    font-size: clamp(25px, 4vw, 48px);
+
     text-align: center;
+
+    letter-spacing: 2px;
+
+    font-weight: 900;
 }
 
-/* =========================
-   MAIN LAYOUT
-========================= */
 
-.website {
-    display: grid;
+/* =========================================================
+   TOP PLUS BUTTON
+========================================================= */
 
-    grid-template-columns: 180px 1fr 300px;
+.top-plus {
 
-    min-height: calc(100vh - 90px);
-}
+    position: absolute;
 
-/* =========================
-   LEFT MENU
-========================= */
+    right: 20px;
 
-.sidebar {
-    border-right: 4px solid black;
-    background: white;
-    padding-top: 10px;
-}
+    top: 20px;
 
-.menu-button {
-    width: 100%;
-    min-height: 55px;
+    width: 58px;
 
-    border: none;
-    border-bottom: 4px solid black;
+    height: 58px;
+
+    border: 3px solid #111111;
 
     background: white;
 
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 27px;
-    font-weight: bold;
+    font-size: 38px;
 
-    text-align: left;
-
-    padding: 5px 8px;
+    line-height: 45px;
 
     cursor: pointer;
+
+    border-radius: 8px;
 }
 
-.menu-button:hover {
+.top-plus:hover {
+
     background: #eeeeee;
 }
 
-/* Different colors like your drawing */
 
-.explore {
-    color: #ff7a00;
-}
+/* =========================================================
+   PLUS MENU
+========================================================= */
 
-.grammar {
-    color: #ed1c24;
-}
+.plus-menu {
 
-.pronunciation {
-    color: #3f51b5;
-}
+    position: absolute;
 
-.topics {
-    color: #20a64a;
-}
+    right: 20px;
 
+    top: 85px;
 
-/* =========================
-   CENTER CONTENT
-========================= */
+    width: 240px;
 
-.content {
-    padding: 25px 55px;
     background: white;
+
+    border: 2px solid #111111;
+
+    box-shadow: 5px 5px 0 #111111;
+
+    z-index: 1000;
+
+    display: none;
 }
 
-.page-title {
-    text-align: center;
 
-    font-size: 36px;
+.plus-menu.show {
 
-    color: #ff6b00;
-
-    margin: 0 0 20px 0;
+    display: block;
 }
 
-.article-area {
-    border: 4px solid #ff8a24;
 
-    min-height: 500px;
+.plus-menu button {
 
-    padding: 30px;
+    width: 100%;
 
-    background: #fff;
-}
+    border: none;
 
-.article-area h2 {
-    margin-top: 0;
+    border-bottom: 1px solid #dddddd;
 
-    font-size: 34px;
+    background: white;
 
-    color: #111;
-}
+    padding: 16px;
 
-.article-area p {
-    font-family: Arial, sans-serif;
+    text-align: left;
 
-    font-size: 18px;
-
-    line-height: 1.7;
-}
-
-.article {
-    border-bottom: 2px solid #ddd;
-
-    padding-bottom: 20px;
-
-    margin-bottom: 25px;
-}
-
-.article h3 {
-    font-size: 25px;
-
-    margin-bottom: 5px;
+    font-size: 16px;
 
     cursor: pointer;
+
+    font-family: Arial, sans-serif;
 }
 
-.article h3:hover {
-    text-decoration: underline;
+
+.plus-menu button:hover {
+
+    background: #eeeeee;
 }
 
-.date {
-    color: #777;
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+.layout {
+
+    display: grid;
+
+    grid-template-columns: 220px minmax(0, 1fr);
+
+    min-height: calc(100vh - 105px);
+}
+
+
+/* =========================================================
+   LEFT SIDEBAR
+========================================================= */
+
+.sidebar {
+
+    border-right: 4px solid #111111;
+
+    background: #ffffff;
+}
+
+
+.sidebar-title {
+
+    padding: 20px;
 
     font-family: Arial, sans-serif;
 
     font-size: 14px;
+
+    color: #777777;
+
+    text-transform: uppercase;
 }
 
 
-/* =========================
-   RIGHT MAGAZINES
-========================= */
+.folder-button {
 
-.magazines {
-    border-left: 4px solid #8fd3e3;
+    width: 100%;
 
-    padding: 8px;
+    min-height: 75px;
+
+    border: none;
+
+    border-bottom: 4px solid #111111;
 
     background: white;
+
+    text-align: left;
+
+    padding: 10px;
+
+    font-size: 27px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    transition: 0.2s;
 }
 
-.magazines-title {
+
+.folder-button:hover {
+
+    background: #eeeeee;
+
+    padding-left: 18px;
+}
+
+
+.folder-button.active {
+
+    background: #f3f3f3;
+}
+
+
+.folder-explore {
+
+    color: #ff7015;
+}
+
+
+.folder-grammar {
+
+    color: #ed1c24;
+}
+
+
+.folder-pronunciation {
+
+    color: #4355b9;
+}
+
+
+.folder-topics {
+
+    color: #1fa64a;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.content {
+
+    padding: 30px 40px;
+
+    min-width: 0;
+}
+
+
+.folder-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 20px;
+}
+
+
+.folder-name {
+
     margin: 0;
 
-    padding: 18px 10px;
+    font-size: 40px;
+}
+
+
+.search {
+
+    width: 280px;
+
+    padding: 12px 15px;
+
+    border: 2px solid #111111;
+
+    border-radius: 25px;
+
+    outline: none;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   ACTION BAR
+========================================================= */
+
+.action-bar {
+
+    border: 3px solid #ff8a24;
+
+    background: #fffaf0;
+
+    padding: 15px;
+
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 20px;
+}
+
+
+.action-button {
+
+    border: 2px solid #111111;
+
+    background: white;
+
+    padding: 11px 17px;
+
+    font-family: Arial, sans-serif;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    border-radius: 5px;
+}
+
+
+.action-button:hover {
+
+    background: #eeeeee;
+}
+
+
+.add-button {
+
+    background: #ff7015;
+
+    color: white;
+
+    border-color: #ff7015;
+}
+
+
+.upload-button {
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   MAGAZINES
+========================================================= */
+
+.magazine {
+
+    border: 4px solid #ff8a24;
+
+    background: white;
+
+    padding: 0;
+
+    min-height: 500px;
+}
+
+
+.magazine-title {
 
     background: #ed1c24;
 
-    color: black;
+    color: #111111;
 
-    font-size: 38px;
+    margin: 0;
 
-    font-weight: bold;
+    padding: 18px 20px;
+
+    font-size: 32px;
+
+    font-weight: 900;
+
+    border-bottom: 3px solid #111111;
 }
 
-.recent-post {
-    margin: 12px 0;
 
-    min-height: 70px;
+.magazine-description {
 
-    border: 4px solid black;
+    padding: 15px 20px;
 
-    border-radius: 20px;
+    font-family: Arial, sans-serif;
 
-    padding: 10px;
+    color: #666666;
+
+    border-bottom: 1px solid #dddddd;
+}
+
+
+/* =========================================================
+   ARTICLE ITEM
+========================================================= */
+
+.article-item {
+
+    padding: 20px;
+
+    border-bottom: 2px solid #dddddd;
+
+    display: grid;
+
+    grid-template-columns: 70px minmax(0, 1fr) auto;
+
+    gap: 18px;
+
+    align-items: center;
+}
+
+
+.article-item:last-child {
+
+    border-bottom: none;
+}
+
+
+.file-icon {
+
+    width: 60px;
+
+    height: 60px;
+
+    border: 2px solid #ff7015;
+
+    background: #fff5e8;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 28px;
+
+    border-radius: 8px;
+}
+
+
+.article-info h3 {
+
+    margin: 0 0 7px 0;
+
+    font-size: 24px;
+
+    cursor: pointer;
+}
+
+
+.article-info h3:hover {
+
+    text-decoration: underline;
+}
+
+
+.article-meta {
+
+    color: #777777;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+    margin-bottom: 8px;
+}
+
+
+.article-preview {
+
+    margin: 0;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 15px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   ARTICLE BUTTONS
+========================================================= */
+
+.article-actions {
+
+    display: flex;
+
+    gap: 8px;
+}
+
+
+.edit-button,
+.delete-button {
+
+    width: 43px;
+
+    height: 43px;
 
     background: white;
 
     cursor: pointer;
 
-    transition: 0.2s;
+    border-radius: 5px;
+
+    font-size: 20px;
 }
 
-.recent-post:hover {
-    background: #f0f0f0;
 
-    transform: translateX(-3px);
+.edit-button {
+
+    border: 2px solid #3366cc;
 }
 
-.recent-post h4 {
-    margin: 0;
 
-    font-size: 18px;
+.delete-button {
+
+    border: 2px solid #ed1c24;
 }
 
-.recent-post small {
-    display: block;
 
-    margin-top: 6px;
+.edit-button:hover {
 
-    color: #777;
+    background: #eaf0ff;
+}
+
+
+.delete-button:hover {
+
+    background: #ffecec;
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.empty {
+
+    text-align: center;
+
+    padding: 70px 20px;
+
+    color: #777777;
 
     font-family: Arial, sans-serif;
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+.empty-icon {
+
+    font-size: 55px;
+
+    margin-bottom: 10px;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal-background {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,0.55);
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 2000;
+
+    padding: 20px;
+}
+
+
+.modal-background.show {
+
+    display: flex;
+}
+
+
+.modal {
+
+    width: min(700px, 100%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border: 4px solid #111111;
+
+    padding: 25px;
+}
+
+
+.modal h2 {
+
+    margin-top: 0;
+
+    font-size: 30px;
+}
+
+
+.form-group {
+
+    margin-bottom: 17px;
+}
+
+
+.form-group label {
+
+    display: block;
+
+    font-family: Arial, sans-serif;
+
+    font-weight: bold;
+
+    margin-bottom: 7px;
+}
+
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: 2px solid #111111;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 15px;
+
+    border-radius: 4px;
+}
+
+
+.form-group textarea {
+
+    min-height: 180px;
+
+    resize: vertical;
+}
+
+
+.modal-buttons {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+
+.cancel {
+
+    background: white;
+
+    border: 2px solid #111111;
+}
+
+
+.save {
+
+    background: #ff7015;
+
+    color: white;
+
+    border: 2px solid #ff7015;
+}
+
+
+.modal-button {
+
+    padding: 11px 20px;
+
+    cursor: pointer;
+
+    font-family: Arial, sans-serif;
+
+    font-weight: bold;
+
+    border-radius: 5px;
+}
+
+
+/* =========================================================
+   ARTICLE READER
+========================================================= */
+
+.reader {
+
+    display: none;
+
+    border: 4px solid #ff8a24;
+
+    padding: 35px;
+
+    background: white;
+}
+
+
+.reader.show {
+
+    display: block;
+}
+
+
+.reader h2 {
+
+    font-size: 40px;
+
+    margin-top: 0;
+}
+
+
+.reader-meta {
+
+    color: #777777;
+
+    font-family: Arial, sans-serif;
+
+    margin-bottom: 30px;
+}
+
+
+.reader-content {
+
+    font-family: Arial, sans-serif;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    white-space: pre-wrap;
+}
+
+
+.back-button {
+
+    background: white;
+
+    border: 2px solid #111111;
+
+    padding: 9px 15px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
 @media (max-width: 900px) {
 
-    .website {
-        grid-template-columns: 150px 1fr;
-    }
+    .layout {
 
-    .magazines {
-        display: none;
-    }
-
-    .header h1 {
-        font-size: 28px;
+        grid-template-columns: 170px minmax(0, 1fr);
     }
 
     .content {
+
         padding: 20px;
+    }
+
+    .folder-button {
+
+        font-size: 21px;
+    }
+
+    .article-item {
+
+        grid-template-columns: 55px minmax(0, 1fr);
+    }
+
+    .article-actions {
+
+        grid-column: 2;
     }
 
 }
 
-@media (max-width: 600px) {
 
-    .website {
+@media (max-width: 650px) {
+
+    .header {
+
+        height: auto;
+
+        min-height: 85px;
+
+        padding: 15px 70px 15px 15px;
+    }
+
+    .header h1 {
+
+        font-size: 23px;
+    }
+
+    .top-plus {
+
+        width: 48px;
+
+        height: 48px;
+
+        right: 12px;
+
+        top: 18px;
+
+        font-size: 30px;
+    }
+
+    .layout {
+
         display: block;
     }
 
     .sidebar {
-        border-right: none;
-
-        border-bottom: 4px solid black;
 
         display: flex;
 
         overflow-x: auto;
+
+        border-right: none;
+
+        border-bottom: 4px solid #111111;
     }
 
-    .menu-button {
-        min-width: 150px;
+    .sidebar-title {
 
-        border-right: 2px solid black;
+        display: none;
+    }
+
+    .folder-button {
+
+        min-width: 145px;
+
+        min-height: 58px;
+
+        border-right: 2px solid #111111;
 
         border-bottom: none;
+
+        font-size: 20px;
     }
 
-    .content {
-        padding: 15px;
+    .folder-header {
+
+        display: block;
     }
 
-    .article-area {
+    .folder-name {
+
+        font-size: 32px;
+
+        margin-bottom: 15px;
+    }
+
+    .search {
+
+        width: 100%;
+    }
+
+    .article-item {
+
+        display: block;
+    }
+
+    .file-icon {
+
+        margin-bottom: 12px;
+    }
+
+    .article-actions {
+
+        margin-top: 15px;
+    }
+
+    .reader {
+
         padding: 20px;
+    }
+
+    .reader h2 {
+
+        font-size: 30px;
     }
 
 }
 
+
+/* =========================================================
+   FILE TYPE COLORS
+========================================================= */
+
+.pdf {
+
+    color: #d71920;
+}
+
+
+.doc {
+
+    color: #2563eb;
+}
+
+
+.image {
+
+    color: #16a34a;
+}
+
+
+.audio {
+
+    color: #9333ea;
+}
+
+
+.file {
+
+    color: #555555;
+}
+
 </style>
+
 </head>
 
 
 <body>
 
 
-<!-- =========================
+<!-- ========================================================
      HEADER
-========================= -->
+========================================================= -->
 
 <header class="header">
 
@@ -321,84 +1001,421 @@ body {
         WEBSITE FOR ENGLISH EXPLORATION
     </h1>
 
+
+    <button
+        class="top-plus"
+        onclick="togglePlusMenu()">
+
+        +
+
+    </button>
+
+
+    <div
+        class="plus-menu"
+        id="plusMenu">
+
+        <button onclick="openArticleModal()">
+
+            ＋ Add New Article
+
+        </button>
+
+
+        <button onclick="openUploadModal()">
+
+            ⬆ Upload Document
+
+        </button>
+
+    </div>
+
 </header>
 
 
 
-<div class="website">
+<div class="layout">
 
 
-<!-- =========================
-     LEFT MENU
-========================= -->
+<!-- ========================================================
+     SIDEBAR / FOLDERS
+========================================================= -->
 
 <aside class="sidebar">
 
-    <button
-        class="menu-button explore"
-        onclick="showCategory('Explore')">
-        Explore
-    </button>
+    <div class="sidebar-title">
 
-    <button
-        class="menu-button grammar"
-        onclick="showCategory('Grammar')">
-        Grammar
-    </button>
-
-    <button
-        class="menu-button pronunciation"
-        onclick="showCategory('Pronunciation')">
-        Pronunciation
-    </button>
-
-    <button
-        class="menu-button topics"
-        onclick="showCategory('Topics')">
-        Topics
-    </button>
-
-</aside>
-
-
-
-<!-- =========================
-     CENTER
-========================= -->
-
-<main class="content">
-
-    <h2 class="page-title" id="categoryTitle">
-        Explore
-    </h2>
-
-
-    <div class="article-area" id="articleArea">
-
-        <h2>Contents</h2>
-
-        <div id="articles"></div>
+        Folders
 
     </div>
 
-</main>
+
+    <button
+        class="folder-button folder-explore active"
+        onclick="changeFolder('Explore')">
+
+        Explore
+
+    </button>
 
 
+    <button
+        class="folder-button folder-grammar"
+        onclick="changeFolder('Grammar')">
 
-<!-- =========================
-     RIGHT SIDE
-========================= -->
+        Grammar
 
-<aside class="magazines">
+    </button>
 
-    <h2 class="magazines-title">
-        magazines
-    </h2>
 
-    <div id="recentPosts"></div>
+    <button
+        class="folder-button folder-pronunciation"
+        onclick="changeFolder('Pronunciation')">
+
+        Pronunciation
+
+    </button>
+
+
+    <button
+        class="folder-button folder-topics"
+        onclick="changeFolder('Topics')">
+
+        Topics
+
+    </button>
 
 </aside>
 
+
+
+<!-- ========================================================
+     MAIN
+========================================================= -->
+
+<main class="content">
+
+
+    <div class="folder-header">
+
+        <h2
+            class="folder-name"
+            id="folderName">
+
+            Explore
+
+        </h2>
+
+
+        <input
+            class="search"
+            id="searchInput"
+            placeholder="Search in Explore..."
+            oninput="renderArticles()">
+
+    </div>
+
+
+
+    <!-- ACTION BAR -->
+
+    <div class="action-bar">
+
+        <button
+            class="action-button add-button"
+            onclick="openArticleModal()">
+
+            ＋ Add New Article
+
+        </button>
+
+
+        <button
+            class="action-button upload-button"
+            onclick="openUploadModal()">
+
+            ⬆ Upload Document
+
+        </button>
+
+    </div>
+
+
+
+    <!-- MAGAZINE -->
+
+    <section
+        class="magazine"
+        id="magazine">
+
+
+        <h2 class="magazine-title">
+
+            MAGAZINES — TABLE OF CONTENTS
+
+        </h2>
+
+
+        <div
+            class="magazine-description"
+            id="magazineDescription">
+
+            This is the table of contents for the Explore folder.
+
+        </div>
+
+
+        <div id="articleContainer"></div>
+
+    </section>
+
+
+
+    <!-- ARTICLE READER -->
+
+    <section
+        class="reader"
+        id="reader">
+
+
+        <button
+            class="back-button"
+            onclick="closeReader()">
+
+            ← Back to Magazines
+
+        </button>
+
+
+        <div id="readerContent"></div>
+
+
+    </section>
+
+
+</main>
+
+</div>
+
+
+
+<!-- ========================================================
+     ARTICLE MODAL
+========================================================= -->
+
+<div
+    class="modal-background"
+    id="articleModal">
+
+
+    <div class="modal">
+
+        <h2>
+            Add New Article
+        </h2>
+
+
+        <div class="form-group">
+
+            <label>
+                Folder
+            </label>
+
+            <select id="articleFolder">
+
+                <option value="Explore">
+                    Explore
+                </option>
+
+                <option value="Grammar">
+                    Grammar
+                </option>
+
+                <option value="Pronunciation">
+                    Pronunciation
+                </option>
+
+                <option value="Topics">
+                    Topics
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Article Title
+            </label>
+
+            <input
+                id="articleTitle"
+                placeholder="Example: The World Is Your Oyster">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Short Description
+            </label>
+
+            <input
+                id="articleDescription"
+                placeholder="A short description of the article">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Article Content
+            </label>
+
+            <textarea
+                id="articleContent"
+                placeholder="Write your article here..."></textarea>
+
+        </div>
+
+
+        <div class="modal-buttons">
+
+            <button
+                class="modal-button cancel"
+                onclick="closeArticleModal()">
+
+                Cancel
+
+            </button>
+
+
+            <button
+                class="modal-button save"
+                onclick="saveArticle()">
+
+                Save Article
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ========================================================
+     UPLOAD MODAL
+========================================================= -->
+
+<div
+    class="modal-background"
+    id="uploadModal">
+
+
+    <div class="modal">
+
+        <h2>
+            Upload Document
+        </h2>
+
+
+        <div class="form-group">
+
+            <label>
+                Folder
+            </label>
+
+            <select id="uploadFolder">
+
+                <option value="Explore">
+                    Explore
+                </option>
+
+                <option value="Grammar">
+                    Grammar
+                </option>
+
+                <option value="Pronunciation">
+                    Pronunciation
+                </option>
+
+                <option value="Topics">
+                    Topics
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Document title
+            </label>
+
+            <input
+                id="uploadTitle"
+                placeholder="Example: Grammar Notes">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Choose file
+            </label>
+
+            <input
+                type="file"
+                id="uploadFile">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Description
+            </label>
+
+            <input
+                id="uploadDescription"
+                placeholder="Description">
+
+        </div>
+
+
+        <div class="modal-buttons">
+
+            <button
+                class="modal-button cancel"
+                onclick="closeUploadModal()">
+
+                Cancel
+
+            </button>
+
+
+            <button
+                class="modal-button save"
+                onclick="saveUploadedFile()">
+
+                Upload
+
+            </button>
+
+        </div>
+
+    </div>
 
 </div>
 
@@ -406,169 +1423,1141 @@ body {
 
 <script>
 
-/* ==================================================
-   YOUR ARTICLES
+/* =========================================================
+   SETTINGS
+========================================================= */
 
-   Bạn sẽ thêm bài viết ở đây.
-================================================== */
+let currentFolder = "Explore";
 
-const articles = [
+let editingId = null;
+
+
+/* =========================================================
+   INITIAL ARTICLES
+========================================================= */
+
+let articles = [
 
     {
+        id: 1,
+
+        type: "article",
+
+        folder: "Explore",
+
         title: "How to Explore the English Language",
-        category: "Explore",
-        date: "August 27, 2026",
+
+        description:
+        "Ideas and methods for discovering English.",
+
         content:
-        "This is an example article. You can replace this text with your own English learning content."
+        "This is an example article.\n\nYou can replace this text with your own English learning content.",
+
+        date: "August 27, 2026"
     },
 
-    {
-        title: "Understanding English Grammar",
-        category: "Grammar",
-        date: "August 26, 2026",
-        content:
-        "Grammar helps us understand how words and sentences work together in English."
-    },
 
     {
-        title: "How to Improve Your English Pronunciation",
-        category: "Pronunciation",
-        date: "August 25, 2026",
-        content:
-        "Good pronunciation makes your English easier for other people to understand."
-    },
+        id: 2,
 
-    {
-        title: "Interesting Topics to Talk About",
-        category: "Topics",
-        date: "August 24, 2026",
-        content:
-        "Here are some interesting topics that you can use to practice speaking English."
-    },
+        type: "article",
 
-    {
+        folder: "Explore",
+
         title: "English Expressions You Should Know",
-        category: "Explore",
-        date: "August 23, 2026",
+
+        description:
+        "Useful expressions for natural English.",
+
         content:
-        "Learning expressions can help you understand natural English conversations."
+        "Learning expressions can help you understand natural English conversations.\n\nAdd your own examples here.",
+
+        date: "August 23, 2026"
+    },
+
+
+    {
+        id: 3,
+
+        type: "article",
+
+        folder: "Grammar",
+
+        title: "Understanding English Grammar",
+
+        description:
+        "A place to store grammar lessons and notes.",
+
+        content:
+        "Write your grammar lesson here.",
+
+        date: "August 26, 2026"
+    },
+
+
+    {
+        id: 4,
+
+        type: "article",
+
+        folder: "Pronunciation",
+
+        title: "How to Improve Your English Pronunciation",
+
+        description:
+        "Pronunciation lessons and notes.",
+
+        content:
+        "Write pronunciation information here.",
+
+        date: "August 25, 2026"
+    },
+
+
+    {
+        id: 5,
+
+        type: "article",
+
+        folder: "Topics",
+
+        title: "Interesting Topics to Talk About",
+
+        description:
+        "Ideas for English speaking practice.",
+
+        content:
+        "Write your speaking topics here.",
+
+        date: "August 24, 2026"
     }
 
 ];
 
 
-/* ==================================================
-   SHOW ARTICLES BY CATEGORY
-================================================== */
+/* =========================================================
+   LOAD SAVED DATA
+========================================================= */
 
-function showCategory(category) {
-
-    document.getElementById("categoryTitle").innerText = category;
-
-    const area = document.getElementById("articles");
-
-    area.innerHTML = "";
+const savedData =
+    localStorage.getItem("englishExplorationArticles");
 
 
-    const categoryArticles =
-        articles.filter(article => article.category === category);
+if (savedData) {
+
+    try {
+
+        articles = JSON.parse(savedData);
+
+    }
+
+    catch(error) {
+
+        console.log("Could not load saved articles.");
+
+    }
+
+}
 
 
-    if (categoryArticles.length === 0) {
+/* =========================================================
+   SAVE DATA
+========================================================= */
 
-        area.innerHTML = `
-            <p>
-                No articles have been added to this section yet.
-            </p>
-        `;
+function saveData() {
 
-        return;
+    localStorage.setItem(
+
+        "englishExplorationArticles",
+
+        JSON.stringify(articles)
+
+    );
+
+}
+
+
+/* =========================================================
+   CHANGE FOLDER
+========================================================= */
+
+function changeFolder(folder) {
+
+    currentFolder = folder;
+
+
+    document
+        .getElementById("folderName")
+        .innerText = folder;
+
+
+    document
+        .getElementById("searchInput")
+        .value = "";
+
+
+    document
+        .getElementById("searchInput")
+        .placeholder =
+        "Search in " + folder + "...";
+
+
+    document
+        .getElementById("magazineDescription")
+        .innerText =
+        "This is the table of contents for the " +
+        folder +
+        " folder.";
+
+
+    document
+        .getElementById("articleFolder")
+        .value = folder;
+
+
+    document
+        .getElementById("uploadFolder")
+        .value = folder;
+
+
+    const buttons =
+        document.querySelectorAll(".folder-button");
+
+
+    buttons.forEach(button => {
+
+        button.classList.remove("active");
+
+    });
+
+
+    const folderClass = {
+
+        "Explore": "folder-explore",
+
+        "Grammar": "folder-grammar",
+
+        "Pronunciation": "folder-pronunciation",
+
+        "Topics": "folder-topics"
+
+    };
+
+
+    const activeButton =
+        document.querySelector(
+            "." + folderClass[folder]
+        );
+
+
+    if (activeButton) {
+
+        activeButton.classList.add("active");
+
     }
 
 
-    categoryArticles.forEach(article => {
+    renderArticles();
 
-        const articleHTML = `
+}
 
-            <div class="article">
 
-                <h3>
-                    ${article.title}
-                </h3>
+/* =========================================================
+   RENDER ARTICLES
+========================================================= */
 
-                <div class="date">
-                    ${article.date}
+function renderArticles() {
+
+    const container =
+        document.getElementById("articleContainer");
+
+
+    const search =
+        document
+            .getElementById("searchInput")
+            .value
+            .toLowerCase()
+            .trim();
+
+
+    let filtered =
+        articles.filter(article => {
+
+            if (article.folder !== currentFolder) {
+
+                return false;
+
+            }
+
+
+            if (!search) {
+
+                return true;
+
+            }
+
+
+            return (
+
+                article.title
+                    .toLowerCase()
+                    .includes(search)
+
+                ||
+
+                article.description
+                    .toLowerCase()
+                    .includes(search)
+
+            );
+
+        });
+
+
+    container.innerHTML = "";
+
+
+    if (filtered.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    📂
                 </div>
 
+                <strong>
+                    This folder is empty.
+                </strong>
+
                 <p>
-                    ${article.content}
+                    Use "+ Add New Article" or
+                    "Upload Document" to add something.
                 </p>
 
             </div>
 
         `;
 
-        area.innerHTML += articleHTML;
+        return;
 
-    });
-
-}
+    }
 
 
-/* ==================================================
-   SHOW RECENT ARTICLES
-================================================== */
+    filtered.forEach(article => {
 
-function showRecentPosts() {
-
-    const recentArea =
-        document.getElementById("recentPosts");
-
-    recentArea.innerHTML = "";
+        const item =
+            document.createElement("div");
 
 
-    const recentArticles =
-        articles.slice(0, 5);
+        item.className =
+            "article-item";
 
 
-    recentArticles.forEach(article => {
+        let icon = "📄";
 
-        const postHTML = `
 
-            <div
-                class="recent-post"
-                onclick="showCategory('${article.category}')"
-            >
+        if (article.type === "file") {
 
-                <h4>
-                    ${article.title}
-                </h4>
+            icon = getFileIcon(article.fileName);
 
-                <small>
-                    ${article.date}
-                </small>
+        }
+
+
+        item.innerHTML = `
+
+            <div class="file-icon">
+
+                ${icon}
+
+            </div>
+
+
+            <div class="article-info">
+
+                <h3
+                    onclick="openArticle(${article.id})">
+
+                    ${escapeHTML(article.title)}
+
+                </h3>
+
+
+                <div class="article-meta">
+
+                    ${article.type === "file" ? "DOCUMENT" : "ARTICLE"}
+
+                    &nbsp; • &nbsp;
+
+                    ${escapeHTML(article.date)}
+
+                    ${article.fileSize
+                        ? " &nbsp; • &nbsp; " + article.fileSize
+                        : ""
+                    }
+
+                </div>
+
+
+                <p class="article-preview">
+
+                    ${escapeHTML(article.description)}
+
+                </p>
+
+            </div>
+
+
+            <div class="article-actions">
+
+                <button
+                    class="edit-button"
+                    onclick="editArticle(${article.id})"
+                    title="Edit">
+
+                    ✎
+
+                </button>
+
+
+                <button
+                    class="delete-button"
+                    onclick="deleteArticle(${article.id})"
+                    title="Delete">
+
+                    🗑
+
+                </button>
 
             </div>
 
         `;
 
-        recentArea.innerHTML += postHTML;
+
+        container.appendChild(item);
 
     });
 
 }
 
 
-/* ==================================================
-   START WEBSITE
-================================================== */
+/* =========================================================
+   OPEN ARTICLE
+========================================================= */
 
-showCategory("Explore");
+function openArticle(id) {
 
-showRecentPosts();
+    const article =
+        articles.find(item => item.id === id);
+
+
+    if (!article) {
+
+        return;
+
+    }
+
+
+    document
+        .getElementById("magazine")
+        .style.display = "none";
+
+
+    document
+        .getElementById("reader")
+        .classList.add("show");
+
+
+    const reader =
+        document.getElementById("readerContent");
+
+
+    if (article.type === "file") {
+
+        reader.innerHTML = `
+
+            <h2>
+                ${escapeHTML(article.title)}
+            </h2>
+
+
+            <div class="reader-meta">
+
+                ${escapeHTML(article.folder)}
+
+                &nbsp; • &nbsp;
+
+                ${escapeHTML(article.date)}
+
+            </div>
+
+
+            <p>
+                ${escapeHTML(article.description)}
+            </p>
+
+
+            <p>
+                <strong>
+                    File:
+                </strong>
+
+                ${escapeHTML(article.fileName)}
+            </p>
+
+
+            <p>
+                The uploaded document is stored
+                in this browser.
+            </p>
+
+        `;
+
+    }
+
+    else {
+
+        reader.innerHTML = `
+
+            <h2>
+                ${escapeHTML(article.title)}
+            </h2>
+
+
+            <div class="reader-meta">
+
+                ${escapeHTML(article.folder)}
+
+                &nbsp; • &nbsp;
+
+                ${escapeHTML(article.date)}
+
+            </div>
+
+
+            <p>
+                <strong>
+                    ${escapeHTML(article.description)}
+                </strong>
+            </p>
+
+
+            <div class="reader-content">
+
+                ${escapeHTML(article.content)}
+
+            </div>
+
+        `;
+
+    }
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+/* =========================================================
+   CLOSE READER
+========================================================= */
+
+function closeReader() {
+
+    document
+        .getElementById("reader")
+        .classList.remove("show");
+
+
+    document
+        .getElementById("magazine")
+        .style.display = "block";
+
+}
+
+
+/* =========================================================
+   PLUS MENU
+========================================================= */
+
+function togglePlusMenu() {
+
+    document
+        .getElementById("plusMenu")
+        .classList.toggle("show");
+
+}
+
+
+/* =========================================================
+   ARTICLE MODAL
+========================================================= */
+
+function openArticleModal() {
+
+    editingId = null;
+
+
+    document
+        .getElementById("articleTitle")
+        .value = "";
+
+
+    document
+        .getElementById("articleDescription")
+        .value = "";
+
+
+    document
+        .getElementById("articleContent")
+        .value = "";
+
+
+    document
+        .getElementById("articleFolder")
+        .value = currentFolder;
+
+
+    document
+        .getElementById("articleModal")
+        .classList.add("show");
+
+
+    document
+        .getElementById("plusMenu")
+        .classList.remove("show");
+
+}
+
+
+/* =========================================================
+   CLOSE ARTICLE MODAL
+========================================================= */
+
+function closeArticleModal() {
+
+    document
+        .getElementById("articleModal")
+        .classList.remove("show");
+
+}
+
+
+/* =========================================================
+   SAVE ARTICLE
+========================================================= */
+
+function saveArticle() {
+
+    const folder =
+        document.getElementById("articleFolder").value;
+
+
+    const title =
+        document.getElementById("articleTitle").value.trim();
+
+
+    const description =
+        document.getElementById("articleDescription").value.trim();
+
+
+    const content =
+        document.getElementById("articleContent").value.trim();
+
+
+    if (!title) {
+
+        alert("Please enter an article title.");
+
+        return;
+
+    }
+
+
+    if (editingId) {
+
+        const article =
+            articles.find(item => item.id === editingId);
+
+
+        if (article) {
+
+            article.folder = folder;
+
+            article.title = title;
+
+            article.description = description;
+
+            article.content = content;
+
+        }
+
+    }
+
+    else {
+
+        articles.unshift({
+
+            id: Date.now(),
+
+            type: "article",
+
+            folder: folder,
+
+            title: title,
+
+            description: description,
+
+            content: content,
+
+            date: getToday()
+
+        });
+
+    }
+
+
+    saveData();
+
+
+    closeArticleModal();
+
+
+    currentFolder = folder;
+
+
+    changeFolder(folder);
+
+}
+
+
+/* =========================================================
+   EDIT
+========================================================= */
+
+function editArticle(id) {
+
+    const article =
+        articles.find(item => item.id === id);
+
+
+    if (!article) {
+
+        return;
+
+    }
+
+
+    if (article.type === "file") {
+
+        alert(
+            "Uploaded files cannot be edited here. " +
+            "You can change their folder by deleting and uploading again."
+        );
+
+        return;
+
+    }
+
+
+    editingId = id;
+
+
+    document
+        .getElementById("articleFolder")
+        .value = article.folder;
+
+
+    document
+        .getElementById("articleTitle")
+        .value = article.title;
+
+
+    document
+        .getElementById("articleDescription")
+        .value = article.description;
+
+
+    document
+        .getElementById("articleContent")
+        .value = article.content;
+
+
+    document
+        .getElementById("articleModal")
+        .classList.add("show");
+
+}
+
+
+/* =========================================================
+   DELETE
+========================================================= */
+
+function deleteArticle(id) {
+
+    const article =
+        articles.find(item => item.id === id);
+
+
+    if (!article) {
+
+        return;
+
+    }
+
+
+    const answer =
+        confirm(
+            "Are you sure you want to delete \"" +
+            article.title +
+            "\"?"
+        );
+
+
+    if (!answer) {
+
+        return;
+
+    }
+
+
+    articles =
+        articles.filter(item => item.id !== id);
+
+
+    saveData();
+
+
+    renderArticles();
+
+}
+
+
+/* =========================================================
+   UPLOAD MODAL
+========================================================= */
+
+function openUploadModal() {
+
+    document
+        .getElementById("uploadFolder")
+        .value = currentFolder;
+
+
+    document
+        .getElementById("uploadTitle")
+        .value = "";
+
+
+    document
+        .getElementById("uploadDescription")
+        .value = "";
+
+
+    document
+        .getElementById("uploadFile")
+        .value = "";
+
+
+    document
+        .getElementById("uploadModal")
+        .classList.add("show");
+
+
+    document
+        .getElementById("plusMenu")
+        .classList.remove("show");
+
+}
+
+
+/* =========================================================
+   CLOSE UPLOAD
+========================================================= */
+
+function closeUploadModal() {
+
+    document
+        .getElementById("uploadModal")
+        .classList.remove("show");
+
+}
+
+
+/* =========================================================
+   SAVE UPLOADED FILE
+========================================================= */
+
+function saveUploadedFile() {
+
+    const folder =
+        document.getElementById("uploadFolder").value;
+
+
+    const title =
+        document.getElementById("uploadTitle").value.trim();
+
+
+    const description =
+        document.getElementById("uploadDescription").value.trim();
+
+
+    const file =
+        document.getElementById("uploadFile").files[0];
+
+
+    if (!file) {
+
+        alert("Please choose a file.");
+
+        return;
+
+    }
+
+
+    const finalTitle =
+        title || file.name;
+
+
+    const fileSize =
+        formatFileSize(file.size);
+
+
+    articles.unshift({
+
+        id: Date.now(),
+
+        type: "file",
+
+        folder: folder,
+
+        title: finalTitle,
+
+        description:
+            description ||
+            "Uploaded document.",
+
+        content: "",
+
+        fileName: file.name,
+
+        fileSize: fileSize,
+
+        date: getToday()
+
+    });
+
+
+    saveData();
+
+
+    closeUploadModal();
+
+
+    currentFolder = folder;
+
+
+    changeFolder(folder);
+
+
+    alert(
+        "The document has been added to the " +
+        folder +
+        " folder."
+    );
+
+}
+
+
+/* =========================================================
+   FILE ICON
+========================================================= */
+
+function getFileIcon(filename) {
+
+    const extension =
+        filename
+            .split(".")
+            .pop()
+            .toLowerCase();
+
+
+    if (extension === "pdf") {
+
+        return "📕";
+
+    }
+
+
+    if (
+        extension === "doc" ||
+        extension === "docx"
+    ) {
+
+        return "📘";
+
+    }
+
+
+    if (
+        extension === "jpg" ||
+        extension === "jpeg" ||
+        extension === "png" ||
+        extension === "gif"
+    ) {
+
+        return "🖼️";
+
+    }
+
+
+    if (
+        extension === "mp3" ||
+        extension === "wav" ||
+        extension === "m4a"
+    ) {
+
+        return "🎵";
+
+    }
+
+
+    return "📄";
+
+}
+
+
+/* =========================================================
+   FILE SIZE
+========================================================= */
+
+function formatFileSize(bytes) {
+
+    if (bytes < 1024) {
+
+        return bytes + " B";
+
+    }
+
+
+    if (bytes < 1024 * 1024) {
+
+        return (
+            (bytes / 1024).toFixed(1) +
+            " KB"
+        );
+
+    }
+
+
+    return (
+
+        (bytes / (1024 * 1024)).toFixed(1) +
+        " MB"
+
+    );
+
+}
+
+
+/* =========================================================
+   TODAY
+========================================================= */
+
+function getToday() {
+
+    return new Date().toLocaleDateString(
+
+        "en-US",
+
+        {
+            month: "long",
+            day: "numeric",
+            year: "numeric"
+        }
+
+    );
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(text) {
+
+    if (!text) {
+
+        return "";
+
+    }
+
+
+    return text
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =========================================================
+   CLOSE PLUS WHEN CLICKING OUTSIDE
+========================================================= */
+
+document.addEventListener(
+
+    "click",
+
+    function(event) {
+
+        const menu =
+            document.getElementById("plusMenu");
+
+
+        const button =
+            document.querySelector(".top-plus");
+
+
+        if (
+            !menu.contains(event.target) &&
+            !button.contains(event.target)
+        ) {
+
+            menu.classList.remove("show");
+
+        }
+
+    }
+
+);
+
+
+/* =========================================================
+   START
+========================================================= */
+
+changeFolder("Explore");
 
 </script>
 
 
 </body>
+
 </html>
